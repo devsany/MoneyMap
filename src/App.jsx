@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App">
       <div className="router">
-        <Navbar />
         <Routes>
           <Route path="/" element={<Transaction />} />
           <Route path="/transaction_table" element={<TransactionTable />} />
