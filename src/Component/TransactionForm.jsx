@@ -58,47 +58,86 @@ const TransactionForm = () => {
   }, [itemName]);
   return (
     <div>
-   <div className="form_main">
-    <div className="form_field_data">
-    <form action="">
-        <label htmlFor="description">Description</label>
-        <input
-          id="description"
-          name="description"
-          type="text"
-          placeholder="Enter Description"
-          value={data.description}
-          onChange={(e) => setData({ ...data, description: e.target.value })}
-        />
-        {errors.description && errors.description}
-        <label htmlFor="amount">Amount</label>
-        <input
-          type="number"
-          placeholder="Enter your amount"
-          value={data.amount}
-          onChange={(e) => setData({ ...data, amount: e.target.value })}
-          name="amount"
-          id="amount"
-        />
-        {errors.amount && errors.amount}
+      <div className="form_main">
+        <div className="form_field_data">
+          <form action="">
+            <div className="coolinput">
+              <label className="text" htmlFor="description">
+                Description
+              </label>
+              <input
+                className="input"
+                id="description"
+                name="description"
+                type="text"
+                placeholder="Enter Description"
+                value={data.description}
+                onChange={(e) =>
+                  setData({ ...data, description: e.target.value })
+                }
+              />
+              <div className="error">
+                {errors.description && errors.description}
+              </div>
+            </div>
+            <div className="coolinput">
+              <label className="text" htmlFor="amount">
+                Amount
+              </label>
+              <input
+                className="input"
+                type="number"
+                placeholder="Enter your amount"
+                value={data.amount}
+                onChange={(e) => setData({ ...data, amount: e.target.value })}
+                name="amount"
+                id="amount"
+              />
+              <div className="error">{errors.amount && errors.amount}</div>
+            </div>
 
-        <label htmlFor="type">Type of Transaction</label>
-        <select
-          name="type"
-          id="type"
-          value={data.type}
-          onChange={(e) => setData({ ...data, type: e.target.value })}
-        >
-          <option data-testid='selectTransaction' value="*">Select Transaction</option>
-          <option data-testid='income' value="income">Income</option>
-          <option data-testid='expendture' value="expendture">Expendture</option>
-        </select>
-        {errors.type && errors.type}
+            <div className="coolinput1">
+              <label className="text" htmlFor="type">
+                Type of Transaction
+              </label>
+              <br />
+              <select
+                className="coolinput1"
+                // className="className="coolinput1""
+                name="type"
+                id="type"
+                value={data.type}
+                onChange={(e) => setData({ ...data, type: e.target.value })}
+              >
+                <option
+                  className="coolinput1"
+                  data-testid="selectTransaction"
+                  value="*"
+                >
+                  Select Transaction
+                </option>
+                <option
+                  className="coolinput1"
+                  data-testid="income"
+                  value="income"
+                >
+                  Income
+                </option>
+                <option
+                  className="coolinput1"
+                  data-testid="expendture"
+                  value="expendture"
+                >
+                  Expendture
+                </option>
+              </select>
+              <div className="error">{errors.type && errors.type}</div>{" "}
+            </div>
 
-        <button onClick={handleData}>Click</button>
-      </form>
-    </div>
-   </div>
+            <button onClick={handleData}>Click</button>
+          </form>
+        </div>
+      </div>
       <div style={{ border: "1px solid black", width: "300px" }}>
         <ul>
           {itemName &&

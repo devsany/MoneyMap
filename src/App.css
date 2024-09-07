@@ -38,3 +38,71 @@ button:focus {
     rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
     rgba(50, 151, 211, 0.3) 0 0 0 4px;
 }
+
+/* input field with label */
+/* From Uiverse.io by kamehame-ha */
+.coolinput {
+  margin: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  max-width: 240px;
+  /* border: 1px solid black; */
+}
+
+.coolinput label.text {
+  font-size: 0.75rem;
+  color: #818cf8;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #fffefe;
+  width: fit-content;
+  border-radius: 5px;
+}
+
+.coolinput input[type="text"].input {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #818cf8 solid;
+  border-radius: 5px;
+  background: #e8e8e8;
+}
+
+.coolinput input[type="text"].input:focus {
+  outline: none;
+}
+
+.coolinput input[type="number"].input {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #818cf8 solid;
+  border-radius: 5px;
+  background: #e8e8e8;
+}
+
+.coolinput input[type="number"].input:focus {
+  outline: none;
+}
+
+.coolinput1 {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #818cf8 solid;
+  border-radius: 5px;
+  background: #e8e8e8;
+}
+
+.coolinput1:focus {
+  outline: none;
+}
+
+.error {
+  color: red;
+  font-weight: 400;
+  font-size: 0.75rem;
+}
