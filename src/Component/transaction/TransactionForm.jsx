@@ -3,7 +3,7 @@ import TransactionTable from "../transactionTable/TransactionTable";
 import { CSVLink, CSVDownload } from "react-csv";
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
-import Chart from 'chart.js/auto';
+import Chart from "chart.js/auto";
 
 const TransactionForm = () => {
   const contentToPrint = useRef(null);
@@ -20,6 +20,7 @@ const TransactionForm = () => {
     id: new Date().toDateString(),
     time: new Date().toTimeString(),
   });
+  console.log(new Date());
   //   console.log(Date());
   const [errors, setErrors] = useState({});
   const [itemName, setItemName] = useState([]);
@@ -59,7 +60,7 @@ const TransactionForm = () => {
   useEffect(() => {
     const valueItem = JSON.stringify(itemName);
     localStorage.setItem("tododata", valueItem);
-  }, [itemName]);
+  }, []);
   return (
     <div>
       <div className="form_main">
@@ -157,50 +158,52 @@ const TransactionForm = () => {
           </form>
         </div>
       </div>
-      <div style={{ width: "300px" }}>
-        <CSVLink data={itemName}>
-          <button>Download me</button>
-        </CSVLink>
-        <button
-          onClick={() => {
-            handlePrint(null, () => contentToPrint.current);
-          }}
-        >
-          PRINT
-        </button>
-        <ul>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Mode of Transaction</th>
-                <th>Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {itemName &&
-                itemName.map((items) => {
-                  return (
-                    <tr>
-                      <td>{new Date().toDateString()}</td>
-                      <td>{items.description}</td>
-                      <td>₹ {items.amount}</td>
-                      <td>{items.type}</td>
-                      <td>{new Date().toTimeString()}</td>
-                    </tr>
-                  );
-                })}
-              {/* // <li key={items.id}>
-                  //   Description:{items.description} || Amount:{items.amount} || Type
-                  //   of Transaction: {items.type} || Date:{items.id} || Time:
-                  //   {items.time}
-                  // </li> */}
-            </tbody>
-          </table>
-        </ul>
-      </div>
+      {itemName[0] && (
+        <div>
+          <CSVLink data={itemName}>
+            <button>Download me</button>
+          </CSVLink>
+          <button
+            onClick={() => {
+              handlePrint(null, () => contentToPrint.current);
+            }}
+          >
+            PRINT
+          </button>
+          <ul>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Mode of Transaction</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {itemName &&
+                  itemName.map((items) => {
+                    return (
+                      <tr>
+                        <td>{new Date().toDateString()}</td>
+                        <td>{items.description}</td>
+                        <td>₹ {items.amount}</td>
+                        <td>{items.type}</td>
+                        <td>{new Date().toTimeString()}</td>
+                      </tr>
+                    );
+                  })}
+                {/* // <li key={items.id}>
+                 //   Description:{items.description} || Amount:{items.amount} || Type
+                 //   of Transaction: {items.type} || Date:{items.id} || Time:
+                 //   {items.time}
+                 // </li> */}
+              </tbody>
+            </table>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
