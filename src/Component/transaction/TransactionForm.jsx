@@ -69,7 +69,7 @@ const TransactionForm = () => {
             <div className="form_data">
               <div className="coolinput w-full max-w-xs p-5 bg-white rounded-lg font-mono">
                 <h2 className="text-center font-thin">
-                  <u>Transaction Detail</u>
+                  <u>Transaction Detai</u>
                 </h2>
                 <label
                   className="text block text-gray-700 text-sm font-bold  mt-5 mb-2"
